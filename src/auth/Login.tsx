@@ -34,7 +34,8 @@ const Login = () => {
             body: JSON.stringify({
                 username: loginUser.username,
                 password: loginUser.password
-            })
+            }),
+            credentials: "include"
         });
 
         const data = await response.json();

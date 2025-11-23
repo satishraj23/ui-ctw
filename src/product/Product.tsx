@@ -14,12 +14,15 @@ interface Product {
 const ProductComponent = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
-    const [productName,setProductName] = useState('');
+    const [productName, setProductName] = useState('');
 
     useEffect(() => {
 
 
-        fetch(`http://localhost:1111/api/products/products/pname/${productName}`)
+        fetch(`http://localhost:1111/api/products/products/pname/${productName}`, {
+            method: "GET",
+            credentials: "include" // this will automatically set token from earlier set cookie in response Header
+        })
             .then(response => response.json())
             .then((resp: Product[]) => {
                 setProducts(resp);
@@ -28,11 +31,11 @@ const ProductComponent = () => {
 
     }, [productName]);
 
-   
+
 
     return (
         <div className="card">
-            <input type="text" value={productName} onChange={(e:React.ChangeEvent<HTMLInputElement>) => setProductName(e.target.value)} placeholder="productName"/>
+            <input type="text" value={productName} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProductName(e.target.value)} placeholder="productName" />
             <table>
                 <thead>
                     <tr>
