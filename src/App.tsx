@@ -1,4 +1,5 @@
 
+import Login from './auth/Login';
 import ProductComponent from './product/Product';
 
 
@@ -12,6 +13,9 @@ function App() {
     <div>
 
     <ProductComponent/>
+
+    <Login/>
+ 
     </div>
     </>
   )
